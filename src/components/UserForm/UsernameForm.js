@@ -18,7 +18,7 @@ class UsernameForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h5 className="grey-text text-darken-3">What is your Username?</h5>
         <form onSubmit={this.onSubmit}>
           <input type="text" placeholder="Username" onChange={this.onChange} />
