@@ -1,9 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import UsernameForm from "./components/UserForm/UsernameForm";
+import ChatScreen from "./components/Chat/ChatScreen";
 
-function App() {
-  const onUsernameSubmitted = username => {
-    fetch("http:/localhost:3000/users", {
+class App extends Component {
+  state = {
+    currentScreen: "WhatIsYourUsernameScreen",
+    currentUsername: ""
+  };
+
+  onUsernameSubmitted = username => {
+    fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -11,18 +17,26 @@ function App() {
       body: JSON.stringify({ username })
     })
       .then(response => {
-        console.log("success");
+        this.setState({
+          currentUsername: username,
+          currentScreen: "ChatScreen"
+        });
       })
       .catch(error => {
         console.error(error);
       });
   };
-
-  return (
-    <div className="App">
-      <UsernameForm onSubmit={onUsernameSubmitted} />
-    </div>
-  );
+  render() {
+    if (this.state.currentScreen === "WhatIsYourUsernameScreen") {
+      return (
+        <div className="App">
+          <UsernameForm onSubmit={this.onUsernameSubmitted} />
+        </div>
+      );
+    } else if (this.state.currentScreen === "ChatScreen") {
+      return <ChatScreen currentUsername={this.state.currentUsername} />;
+    }
+  }
 }
 
 export default App;

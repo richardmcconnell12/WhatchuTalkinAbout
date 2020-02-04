@@ -5,7 +5,7 @@ const Chatkit = require("pusher-chatkit-server");
 
 const app = express();
 
-const chatKit = new Chatkit.default({
+const chatkit = new Chatkit.default({
   instanceLocator: "v1:us1:32bb4c8e-12be-4848-af89-3496228e8147",
   key:
     "cf90c6c9-be5c-41db-a137-b6f9af327811:7f5HAvp2/cVxkwa4Q+5bDxRh3VhRM9bhiA2ZfJa0acI="
@@ -18,7 +18,7 @@ app.use(cors);
 app.post("/users", (req, res) => {
   const { username } = req.body;
 
-  chatKit
+  chatkit
     .createUser({
       name: username,
       id: username
@@ -31,6 +31,11 @@ app.post("/users", (req, res) => {
         res.status(err.statusCode).json(err);
       }
     });
+});
+
+app.post("/authenticate", (req, res) => {
+  const { grant_type } = req.body;
+  res.json(chatkit.authenticate({ grant_type, userId: req.query.user_id }));
 });
 
 const port = 3000;
