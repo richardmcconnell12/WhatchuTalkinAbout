@@ -4,12 +4,12 @@ import ChatScreen from "./components/Chat/ChatScreen";
 
 class App extends Component {
   state = {
-    currentScreen: "WhatIsYourUsernameScreen",
-    currentUsername: ""
+    currentUsername: "",
+    currentScreen: "WhatIsYourUsernameScreen"
   };
 
-  onUsernameSubmitted = username => {
-    fetch("http://localhost:3000/users", {
+  onUsernameSubmitted(username) {
+    fetch("http://localhost:3001/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -17,15 +17,15 @@ class App extends Component {
       body: JSON.stringify({ username })
     })
       .then(response => {
+        // console.log("USER", username);
         this.setState({
           currentUsername: username,
           currentScreen: "ChatScreen"
         });
       })
-      .catch(error => {
-        console.error(error);
-      });
-  };
+      .catch(error => console.error("error", error));
+  }
+
   render() {
     if (this.state.currentScreen === "WhatIsYourUsernameScreen") {
       return (

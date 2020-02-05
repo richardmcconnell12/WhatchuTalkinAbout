@@ -5,15 +5,15 @@ class UsernameForm extends Component {
     username: ""
   };
 
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state.username);
+  };
+
   onChange = e => {
     this.setState({
       username: e.target.value
     });
-  };
-
-  onSubmit = e => {
-    e.preventDefault();
-    this.props.onSubmit(this.state.username);
   };
 
   render() {

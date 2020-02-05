@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const Chatkit = require("pusher-chatkit-server");
+const Chatkit = require("@pusher/chatkit-server");
 
 const app = express();
 
@@ -13,36 +13,35 @@ const chatkit = new Chatkit.default({
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors);
+app.use(cors());
 
 app.post("/users", (req, res) => {
   const { username } = req.body;
-
   chatkit
     .createUser({
-      name: username,
-      id: username
+      id: username,
+      name: username
     })
     .then(() => res.sendStatus(201))
-    .catch(err => {
-      if (err.error_type === "services/chatkit/user_already_exists") {
+    .catch(error => {
+      if (error.error === "services/chatkit/user_already_exists") {
         res.sendStatus(200);
       } else {
-        res.status(err.statusCode).json(err);
+        res.status(error.status).json(error);
       }
     });
 });
 
 app.post("/authenticate", (req, res) => {
-  const { grant_type } = req.body;
-  res.json(chatkit.authenticate({ grant_type, userId: req.query.user_id }));
+  const authData = chatkit.authenticate({ userId: req.query.user_id });
+  res.status(authData.status).send(authData.body);
 });
 
-const port = 3000;
-app.listen(port, err => {
+const PORT = 3001;
+app.listen(PORT, err => {
   if (err) {
-    console.log(err);
+    console.error(err);
   } else {
-    console.log("Running on port ", port);
+    console.log(`Running on port ${PORT}`);
   }
 });
