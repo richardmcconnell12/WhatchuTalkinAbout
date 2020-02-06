@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import NavBar from "./components/layout/NavBar";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -7,11 +9,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <p className="App-intro">
+      <BrowserRouter>
+        <div className="App">
+          <NavBar />
           This is the timer value: {this.state.timestamp}
-        </p>
-      </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }

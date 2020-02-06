@@ -1,7 +1,23 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-// import SignInLinks from "./SignInLinks";
-// import SignOutLinks from "./SignOutLinks";
+import { Link } from "react-router-dom";
+import SignInLinks from "./SignInLinks";
+import SignOutLinks from "./SignOutLinks";
 // import { connect } from "react-redux";
 
-const NavBar = props => {};
+const NavBar = props => {
+  //   const { auth, profile } = props;
+  //   const links = auth.id ? <SignInLinks profile={profile} /> : <SignOutLinks />;
+
+  return (
+    <nav className="nav-wrapper grey darken-3">
+      <div className="container">
+        <Link to="/" className="brand-logo left">
+          WhatchuTalkinAbout?
+        </Link>
+        {/* {links} */}
+      </div>
+    </nav>
+  );
+};
+
+export default NavBar;
