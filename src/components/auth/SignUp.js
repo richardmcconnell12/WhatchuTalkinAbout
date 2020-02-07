@@ -4,7 +4,6 @@ import { Redirect } from "react-router-dom";
 // import { connect } from "react-redux";
 // import { signUp } from "../../store/actions/authActions";
 
-
 class SignUp extends Component {
   state = {
     email: "",
@@ -29,11 +28,7 @@ class SignUp extends Component {
     const { auth, authError } = this.props;
     // if (auth.uid) return <Redirect to={"/"} />;
 
-
     console.log("newUser", this.state);
-  };
-
-  render() {
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
@@ -58,9 +53,8 @@ class SignUp extends Component {
             <button className="btn teal lighten-1 z-depth-0">Sign Up</button>
 
             <div className="red-text center">
-              {/* {authError ? <p>{authError}</p> : null} */}
+              {authError ? <p>{authError}</p> : null}
             </div>
-
           </div>
         </form>
       </div>
