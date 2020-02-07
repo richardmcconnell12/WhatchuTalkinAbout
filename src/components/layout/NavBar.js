@@ -15,6 +15,8 @@ const NavBar = props => {
           WhatchuTalkinAbout?
         </Link>
         {/* {links} */}
+        <SignInLinks />
+        <SignOutLinks />
       </div>
     </nav>
   );
