@@ -1,20 +1,16 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { Redirect } from "react-router-dom";
+import { firestoreConnect } from "react-redux-firebase";
 
-// import { connect } from "react-redux";
-// import { firestoreConnect } from "react-redux-firebase";
-// import { compose } from "redux";
-// import { Redirect } from "react-router-dom";
 class Dashboard extends Component {
   state = {
     timestamp: "no timestamp yet"
   };
-
   render() {
-    // const { projects, auth, notifications } = this.props;
-
-    // const { messages, auth } = this.props;
-
-    // if (!auth.uid) return <Redirect to="/signin" />;
+    const { messages, auth } = this.props;
+    if (!auth.uid) return <Redirect to="/signin" />;
 
     return (
       <div className="dashboard container">
@@ -29,4 +25,10 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+  return {
+    auth: state.firebase.auth
+  };
+};
+
+export default connect(mapStateToProps)(Dashboard);

@@ -14,14 +14,18 @@ const store = createStore(
   rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-    reactReduxFirebase(firebaseConfig), // redux binding for firebase
+    reactReduxFirebase(firebaseConfig, {
+      attachAuthIsReady: true
+    }), // redux binding for firebase
     reduxFirestore(firebaseConfig) // redux bindings for firestore
   )
 );
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
-);
+store.firebaseAuthIsReady.then(() => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById("root")
+  );
+});
