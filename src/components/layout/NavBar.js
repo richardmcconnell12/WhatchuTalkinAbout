@@ -18,7 +18,6 @@ const NavBar = props => {
         {/* {links} */}
         <SignInLinks />
         <SignOutLinks />
-
       </div>
     </nav>
   );

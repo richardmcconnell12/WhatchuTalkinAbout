@@ -10,13 +10,21 @@ class Dashboard extends Component {
   };
 
   render() {
+
+    // const { projects, auth, notifications } = this.props;
+
     // const { messages, auth } = this.props;
+
     // if (!auth.uid) return <Redirect to="/signin" />;
 
     return (
       <div className="dashboard container">
         <div className="row">
+
+          <div className="message-list-container col s12 m6">
+
           <div className="messages-list-container col s12 m6">
+
             This is the timer value: {this.state.timestamp}
             {/* <MessageList messages={messages} /> */}
           </div>
