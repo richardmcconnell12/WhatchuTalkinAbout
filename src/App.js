@@ -1,17 +1,23 @@
 import React, { Component } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Dashboard from "./components/dashboard/Dashboard";
+import NavBar from "./components/layout/NavBar";
+import SignIn from "./components/auth/SignIn";
+import SignUp from "./components/auth/SignUp";
 
 class App extends Component {
-  state = {
-    timestamp: "no timestamp yet"
-  };
-
   render() {
     return (
-      <div className="App">
-        <p className="App-intro">
-          This is the timer value: {this.state.timestamp}
-        </p>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <NavBar />
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
