@@ -12,9 +12,9 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        {/* <SideNav /> */}
         <div className="App">
           <NavBar />
-          <SideNav />
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/signin" component={SignIn} />
