@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
+import CreateMessage from "../messages /CreateMessage";
 
 class Dashboard extends Component {
   state = {
@@ -20,6 +21,7 @@ class Dashboard extends Component {
             {/* <MessageList messages={messages} /> */}
           </div>
         </div>
+        <CreateMessage />
       </div>
     );
   }
