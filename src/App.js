@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Dashboard from "./components/dashboard/Dashboard";
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Dashboard from './components/dashboard/Dashboard';
 
-import NavBar from "./components/layout/NavBar";
-import SignIn from "./components/auth/SignIn";
-import SignUp from "./components/auth/SignUp";
-import SideNav from "./components/layout/SideNav";
+import NavBar from './components/layout/NavBar';
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
+import SideNav from './components/layout/SideNav';
 
 class App extends Component {
   render() {

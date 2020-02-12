@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import SignInLinks from "./SignInLinks";
-import SignOutLinks from "./SignOutLinks";
-import { connect } from "react-redux";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import SignInLinks from './SignInLinks';
+import SignOutLinks from './SignOutLinks';
 
-const NavBar = props => {
+const NavBar = (props) => {
   const { auth } = props;
   console.log(auth);
   const links = auth.uid ? <SignInLinks /> : <SignOutLinks />;
@@ -21,10 +21,8 @@ const NavBar = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    auth: state.firebase.auth
-  };
-};
+const mapStateToProps = (state) => ({
+  auth: state.firebase.auth,
+});
 
 export default connect(mapStateToProps)(NavBar);

@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import Sidebar from "react-sidebar";
+import React, { Component } from 'react';
+import Sidebar from 'react-sidebar';
 
 class SideNav extends Component {
   state = {
-    sideNavOpen: false
+    sideNavOpen: false,
   };
 
-  onSetSidebarOpen = open => {
+  onSetSidebarOpen = (open) => {
     this.setState({ sideNavOpen: open });
   };
 
@@ -16,7 +16,7 @@ class SideNav extends Component {
         sidebar={<b>Your friends</b>}
         open={this.state.sideNavOpen}
         onSetOpen={this.onSetSidebarOpen}
-        styles={{ sidebar: { background: "white" } }}
+        styles={{ sidebar: { background: 'white' } }}
       >
         <button
           className="sideNav-btn"
