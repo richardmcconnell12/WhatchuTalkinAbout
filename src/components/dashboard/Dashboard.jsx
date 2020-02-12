@@ -1,18 +1,22 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
+// import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
-import { firestoreConnect } from 'react-redux-firebase';
+// import { firestoreConnect } from 'react-redux-firebase';
 import CreateMessage from '../messages /CreateMessage';
 
 class Dashboard extends Component {
-  state = {
-    timestamp: 'no timestamp yet',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      timestamp: 'no timestamp yet',
+    };
+  }
 
 
   render() {
-    const { messages, auth } = this.props;
+    const { auth } = this.props;
+    const { timestamp } = this.state;
     if (!auth.uid) return <Redirect to="/signin" />;
 
     return (
@@ -20,8 +24,7 @@ class Dashboard extends Component {
         <div className="row">
           <div className="message-list-container col s12 m6">
             This is the timer value:
-            {' '}
-            {this.state.timestamp}
+            {timestamp}
             {/* <MessageList messages={messages} /> */}
           </div>
         </div>

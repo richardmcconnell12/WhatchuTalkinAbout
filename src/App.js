@@ -6,7 +6,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import NavBar from './components/layout/NavBar';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
-import SideNav from './components/layout/SideNav';
+// import SideNav from './components/layout/SideNav';
 
 class App extends Component {
   render() {
