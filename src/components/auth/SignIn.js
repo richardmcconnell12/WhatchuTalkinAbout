@@ -1,28 +1,28 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { signIn } from "../../store/actions/authActions";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { signIn } from '../../store/actions/authActions';
 
 class SignIn extends Component {
   state = {
-    email: "",
-    password: ""
+    email: '',
+    password: '',
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.id]: e.target.value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.signIn(this.state);
   };
 
   render() {
     const { authError, auth } = this.props;
-    if (auth.uid) return <Redirect to={"/"} />;
+    if (auth.uid) return <Redirect to="/" />;
 
     return (
       <div className="container">
@@ -48,17 +48,13 @@ class SignIn extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    authError: state.auth.authError,
-    auth: state.firebase.auth
-  };
-};
+const mapStateToProps = (state) => ({
+  authError: state.auth.authError,
+  auth: state.firebase.auth,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    signIn: creds => dispatch(signIn(creds))
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  signIn: (creds) => dispatch(signIn(creds)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
