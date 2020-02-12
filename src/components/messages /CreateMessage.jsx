@@ -23,10 +23,6 @@ class CreateMessage extends Component {
   };
 
 
-
-
-
-
   render() {
     // const { auth } = this.props;
     return (
