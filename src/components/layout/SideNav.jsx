@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import Sidebar from 'react-sidebar';
 
 class SideNav extends Component {
-  state = {
-    sideNavOpen: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      sideNavOpen: true,
+    };
+  }
+
 
   onSetSidebarOpen = (open) => {
     this.setState({ sideNavOpen: open });
@@ -14,11 +18,12 @@ class SideNav extends Component {
     return (
       <Sidebar
         sidebar={<b>Your friends</b>}
-        open={this.state.sideNavOpen}
+        open={this.sideNavOpen}
         onSetOpen={this.onSetSidebarOpen}
         styles={{ sidebar: { background: 'white' } }}
       >
         <button
+          type="button"
           className="sideNav-btn"
           onClick={() => this.onSetSidebarOpen(true)}
         >
