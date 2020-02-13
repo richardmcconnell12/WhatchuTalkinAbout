@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Dashboard from './components/dashboard/Dashboard';
-
 import NavBar from './components/layout/NavBar';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
